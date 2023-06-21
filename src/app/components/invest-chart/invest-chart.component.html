@@ -1,0 +1,45 @@
+<div class="container" fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <div fxLayout="row">
+    <div fxFlex="20%"></div>
+    <div fxFlex="20%" style="text-align: center;">Saldo</div>
+    <div fxFlex="20%" style="text-align: center;">Rendimento %</div>
+    <div fxFlex="20%" style="text-align: center;">% CDI</div>
+    <div fxFlex="20%" style="text-align: center;">% IPCA</div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="20%">{{ticker}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker] | currency:'BRL'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker] * 100 / lastItem['Savings'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker] * 100 / lastItem['CDI'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker] * 100 / lastItem['IPCA'] | number: '1.2-2'}}</div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="20%">Mínima do mês</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker + ' Min'] | currency:'BRL'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker + ' Min'] * 100 / lastItem['Savings'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker + ' Min'] * 100 / lastItem['CDI'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem[ticker + ' Min'] * 100 / lastItem['IPCA'] | number: '1.2-2'}}</div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="20%">CDI</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['CDI'] | currency:'BRL'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['CDI'] * 100 / lastItem['Savings'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['CDI'] * 100 / lastItem['CDI'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['CDI'] * 100 / lastItem['IPCA'] | number: '1.2-2'}}</div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="20%">IPCA</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['IPCA'] | currency:'BRL'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['IPCA'] * 100 / lastItem['Savings'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['IPCA'] * 100 / lastItem['CDI'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['IPCA'] * 100 / lastItem['IPCA'] | number: '1.2-2'}}</div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="20%">Colchão</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['Savings'] | currency:'BRL'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['Savings'] * 100 / lastItem['Savings'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['Savings'] * 100 / lastItem['CDI'] | number: '1.2-2'}}</div>
+    <div fxFlex="20%" style="text-align: right;">{{lastItem['Savings'] * 100 / lastItem['IPCA'] | number: '1.2-2'}}</div>
+  </div>
+</div>
+<div echarts [options]="invChartOption" class="demo-chart" [theme]="'dark'"></div>
